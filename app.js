@@ -73,20 +73,11 @@ if (errors.length > 0) {
 
 //static routes
 app.get("/", (request, response) => {
-  response.send(`
-   <html>
-   <head>
-    <link rel="stylesheet" href ="style.css">
-   </head>
-   <body>
-    <div class="container">
-     <h1>My express app</h1>
-     <p> This page uses CSS and JavaScript!</p>
-    </div>
-   </body>
-   </html>
-   `);
-});
+   response.render('home', {
+   username: 'Developer',
+   currentDate: new Date().toLocaleDateString('id-ID')
+   })
+  });
 
 app.get("/about", (request, response) => {
   response.send("<h2>About page</h2><p>This is express!</p>");
@@ -259,3 +250,4 @@ app.use((err, req, res, next) => {
     .type("html")
     .send(`<h2>Server Error</h2><pre>${err.stack}</pre>`);
 });
+
